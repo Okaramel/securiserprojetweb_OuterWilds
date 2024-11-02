@@ -36,24 +36,36 @@ if (
         <input type="hidden" name="token" value="<?=  $_SESSION['csrf_article_add']; ?>">
         <input type="submit" name="ajouter" value="Ajouter">
 
-        <form method="POST" action="supprimer.php" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet élément ?');">
-    <input type="hidden" name="id" value="1">
-    
-    <button type="submit">Supprimer</button>
-
-    <h1>Liste des Articles</h1>
-
-    <?php if ($liste->rowCount() > 0): ?>
-            <?php while ($row = $liste->fetch(PDO::FETCH_ASSOC)): ?>
-                <div>
-                    <h1><?php echo htmlspecialchars($row['title']); ?></h1>
-                    <p><?php echo htmlspecialchars($row['content']); ?></p>
-            </div>
-            <?php endwhile; ?>
-        </table>
-    <?php else: ?>
-        <p>Aucun article trouvé.</p>
-    <?php endif; ?>
-</form>
+    </form>
+    <h1>Liste des articles</h1>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Titre</th>
+            <th>slug</th>
+            <th>Action</th>
+        </tr>
+        <?php while ($row = $liste->fetch(PDO::FETCH_ASSOC)): ?>
+            <tr>
+                <td><?php echo $row['id']; ?></td>
+                <td><?php echo $row['title']; ?></td>
+                <td><?php echo $row['slug']; ?></td>
+                <td>
+                    <form action="delete.php" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                        <button type="submit" onclick="return confirm('Voulez-vous vraiment supprimer cet article ?');">Supprimer</button>
+                    </form>
+                </td>
+                <td>
+                <form action="update.php" method="POST">
+                        <input type="hidden" name="slug" value="<?php echo $row['slug']; ?>">
+                        <button type="submit">Edit</button>
+                    </form>
+                </td>
+            </tr>
+        <?php endwhile; ?>
+    </table>
+</body>
+</html>
 </body>
 </html>
