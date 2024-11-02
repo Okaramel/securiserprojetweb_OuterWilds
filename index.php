@@ -7,9 +7,8 @@ $sql = "SELECT * FROM article";
 $liste = $connexion->query($sql);
 
 if (
-    !isset($_SESSION['csrf_article_add']) ||
-    empty($_SESSION['csrf_article_add'])
-){
+    !isset($_SESSION['csrf_article_add']) || empty($_SESSION['csrf_article_add'])){
+
     $_SESSION['csrf_article_add'] = bin2hex(string: random_bytes(length: 32));
 }
 ?>
@@ -57,10 +56,7 @@ if (
                     </form>
                 </td>
                 <td>
-                <form action="update.php" method="POST">
-                        <input type="hidden" name="slug" value="<?php echo $row['slug']; ?>">
-                        <button type="submit">Edit</button>
-                    </form>
+                <a href="update.php?slug=<?php echo urlencode($row['slug']); ?>">Edit</a>
                 </td>
             </tr>
         <?php endwhile; ?>

@@ -14,6 +14,7 @@ $liste = $connexion->query($sql);
     <title>Liste des Articles</title>
 </head>
 <body>
+    <a href="admin.php">Connexion</a>
     <h1>Liste des Articles</h1>
 
     <?php if ($liste->rowCount() > 0): ?>

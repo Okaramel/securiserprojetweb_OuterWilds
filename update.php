@@ -1,34 +1,45 @@
 <?php
-
+session_start();
 require_once 'bdd.php';
 
-try {
-    
+if (isset($_GET['slug'])) {
+    $slug = $_GET['slug'];
 
-// Vérifiez que toutes les données nécessaires sont présentes
-if (isset($_POST['slug']) && isset($_POST['title']) && isset($_POST['content'])) {
-    $slug = $_POST['slug'];
-    $title = $_POST['title'];
-    $content = $_POST['content'];
+    $stmt = $connexion->prepare("SELECT * FROM article WHERE slug = :slug");
+    $stmt->bindParam(':slug', $slug, PDO::PARAM_STR);
+    $stmt->execute();
+    $article = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Préparez la requête de mise à jour
-    $stmt = $connexion->prepare("UPDATE article SET title = :title, content = :content WHERE slug = :slug");
-    $stmt->bindParam(':title', $title, PDO::PARAM_STR);
-    $stmt->bindParam(':content', $content, PDO::PARAM_STR);
-    $stmt->bindParam(':slug', $slug, PDO::PARAM_STR); // Correction ici, utilisez PDO::PARAM_STR pour le slug
-
-    // Exécutez la requête et vérifiez si elle a réussi
-    if ($stmt->execute()) {
-        echo "Article mis à jour avec succès.";
-    } else {
-        echo "Erreur lors de la mise à jour de l'article.";
+    if (!$article) {
+        echo "Article introuvable.";
+        exit;
     }
-} else {
-    echo "Données manquantes ou ID invalide.";
 }
-} catch (PDOException $e) {
-    echo "Erreur SQL : " . $e->getMessage();
-}
-
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier l'Article</title>
+</head>
+<body>
+    <h1>Modifier l'Article</h1>
+    <form action="update_article.php" method="POST">
+        <input type="hidden" name="slug" value="<?php echo htmlspecialchars($article['slug']); ?>">
+
+        <label for="title">Titre :</label>
+        <input type="text" name="title" id="title" value="<?php echo htmlspecialchars($article['title']); ?>" required>
+        <br><br>
+
+        <label for="content">Contenu :</label>
+        <textarea name="content" id="content" rows="5" cols="30" required><?php echo htmlspecialchars($article['content']); ?></textarea>
+        <br><br>
+
+        <input type="submit" value="Enregistrer les modifications">
+    </form>
+</body>
+</html>
+
 
