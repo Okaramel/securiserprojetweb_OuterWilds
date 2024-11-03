@@ -1,9 +1,9 @@
 <?php
 
-// require_once 'bdd.php';
+require_once 'bdd.php';
 
-// $sql = "SELECT * FROM article";
-// $liste = $connexion->query($sql);
+$sql = "SELECT * FROM article";
+$liste = $connexion->query($sql);
 
 ?>
 
@@ -23,7 +23,7 @@
     </header>
 
     <main class="accueil_main">
-        <!-- <?php if ($liste->rowCount() > 0): ?> -->
+        <?php if ($liste->rowCount() > 0): ?>
             <?php while ($row = $liste->fetch(PDO::FETCH_ASSOC)): ?>
                 <div>
                     <h2 class="article_card_title"><?php echo htmlspecialchars($row['title']); ?></h2>

@@ -16,12 +16,11 @@ $getArticle->execute(params: [
     'slug' => htmlspecialchars(string: $_GET['s'])
 ]);
 
-if($getArticle->rowCount() == 1){
-$article = $getArticle->fetch();
-echo '<h1>'. $article['title'] .'</h1>';
-echo '<p>'. $article['content'] .'</p>';
+if($getArticle->rowCount() == 1) {
+    $article = $getArticle->fetch();
+    echo '<h1>'. $article['title'] .'</h1>';
+    echo '<p>'. $article['content'] .'</p>';
 }
-else{
+else {
     echo '<p>Article introuvable</p>';
 }
-

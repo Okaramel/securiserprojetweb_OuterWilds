@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-// require_once 'bdd.php';
+require_once 'bdd.php';
 
-// $sql = "SELECT * FROM article";
-// $liste = $connexion->query($sql);
+$sql = "SELECT * FROM article";
+$liste = $connexion->query($sql);
 
 if (
     !isset($_SESSION['csrf_article_add']) || empty($_SESSION['csrf_article_add'])){
@@ -53,7 +53,7 @@ if (
             <th>slug</th>
             <th>Action</th>
         </tr>
-        <!-- <?php while ($row = $liste->fetch(PDO::FETCH_ASSOC)): ?> -->
+        <?php while ($row = $liste->fetch(PDO::FETCH_ASSOC)): ?>
             <tr>
                 <td><?php echo $row['id']; ?></td>
                 <td><?php echo $row['title']; ?></td>
@@ -68,7 +68,7 @@ if (
                 <a href="update.php?slug=<?php echo urlencode($row['slug']); ?>">Edit</a>
                 </td>
             </tr>
-        <!-- <?php endwhile; ?> -->
+        <?php endwhile; ?>
     </table>
 </body>
 </html>
