@@ -1,0 +1,221 @@
+* {
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    color: black;
+}
+
+.form_card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.form_card_0 {
+    margin: 0.5rem;
+    padding: 0.25rem;
+    border: 0.25rem solid black;
+    border-radius: 2rem;
+}
+
+.form_card_title {
+    height: 5rem;
+    width: 50rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
+}
+
+.form_card_1 {
+    height: 3rem;
+    width: 50rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.5rem;
+}
+
+.form_card_01 {
+    height: 3rem;
+    width: 18rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1.5rem;
+}
+
+.form_card_01 input {
+    height: 1.5rem;
+    border-radius: 0.25rem;
+    padding-left: 0.25rem;
+}
+
+.form_card_1 div {
+    width: 30%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.form_card_1 input {
+    height: 1.5rem;
+    border-radius: 0.25rem;
+    padding-left: 0.25rem;
+}
+
+.form_card_2 {
+    height: 10rem;
+    width: 50rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.form_card_2 label {
+    width: 15%;
+    font-size: 1.5rem;
+}
+
+.form_card_2 textarea {
+    height: 9rem;
+    width: 85%;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    font-size: 1rem;
+}
+
+.form_card_submit {
+    height: 2rem;
+    min-width: 10rem;
+    padding: 0 0.5rem;
+    margin: 0.5rem 0.25rem;
+    font-size: 1.25rem;
+    border-radius: 1rem;
+}
+
+.accueil_header {
+    margin: 1rem 0 3rem 0;
+    height: 7rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.accueil_header h1 {
+    font-size: 5rem;
+}
+
+.accueil_header a {
+    height: 1.5rem;
+    font-size: 1.25rem;
+    margin: 0.5rem;
+    padding: 0.25rem;
+    border: 0.15rem solid black;
+    border-radius: 1rem;
+}
+
+.accueil_main {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.article_card {
+    height: 25rem;
+    width: 20rem;
+    display: flex;
+    margin: 2rem;
+    flex-direction: column;
+    border: 0.5rem solid black;
+    border-radius: 1rem;
+}
+
+.article_card_title {
+    font-size: 2.5rem;
+    padding: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.article_card_text {
+    padding: 0.5rem;
+    font-size: 1.25rem;
+}
+
+.connexion_admin {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.connexion_admin_form {
+    height: 50%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    border: 0.5rem solid black;
+    border-radius: 3rem;
+    overflow: hidden;
+    background-color: azure;
+}
+
+.connexion_admin_title {
+    display: flex;
+    justify-content: center;
+    font-size: 5rem;
+}
+
+.connexion_admin_input {
+    height: 30%;
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.connexion_admin_user {
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+}
+
+.connexion_admin_user input {
+    height: 80%;
+    width: 60%;
+    font-size: 2rem;
+}
+
+.connexion_admin_pass {
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 2rem;
+}
+
+.connexion_admin_pass input {
+    height: 80%;
+    width: 60%;
+    font-size: 2rem;
+}
+
+.connexion_admin_submit {
+    height: 10%;
+    width: 25%;
+    font-size: 2rem;
+}

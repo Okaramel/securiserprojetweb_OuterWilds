@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-require_once 'bdd.php';
+// require_once 'bdd.php';
 
-$sql = "SELECT * FROM article";
-$liste = $connexion->query($sql);
+// $sql = "SELECT * FROM article";
+// $liste = $connexion->query($sql);
 
 if (
     !isset($_SESSION['csrf_article_add']) || empty($_SESSION['csrf_article_add'])){
@@ -19,32 +19,41 @@ if (
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
-    <form action="traitement.php" method="POST">
-        <label for="title">Titre : </label>
-        <input type="text" name="title" id="title" placeholder="Article 1">
-        <br>
-        <label for="content">Contenu : </label>
-        <textarea name="content" id="content" rows="10" cols="30"></textarea>
-        <br>
-        <label for="slug">Slug : </label>
-        <input type="text" name="slug" id="slug" placeholder="article-1">
-        <br>
-        <input type="hidden" name="token" value="<?=  $_SESSION['csrf_article_add']; ?>">
-        <input type="submit" name="ajouter" value="Ajouter">
-
+    <form class="form_card" action="traitement.php" method="POST">
+        <div class="form_card_0">
+            <h2 class="form_card_title">Créez votre article !</h2>
+            <div class="form_card_1">
+                <div>
+                    <label for="title">Titre : </label>
+                    <input type="text" name="title" id="title" placeholder="Article 1">
+                </div>
+                <div>
+                    <label for="slug">Slug : </label>
+                    <input type="text" name="slug" id="slug" placeholder="article-1">
+                </div>
+            </div>
+            <div class="form_card_2">
+                <label for="content">Contenu : </label>
+                <textarea name="content" id="content" rows="10" cols="30"></textarea>
+            </div>
+            <input type="hidden" name="token" value="<?=  $_SESSION['csrf_article_add']; ?>">
+            <input class="form_card_submit" type="submit" name="ajouter" value="Ajouter">
+        </div>
     </form>
-    <h1>Liste des articles</h1>
-    <table border="1">
+
+    <h2>Liste des articles</h2>
+    <table>
         <tr>
             <th>ID</th>
             <th>Titre</th>
             <th>slug</th>
             <th>Action</th>
         </tr>
-        <?php while ($row = $liste->fetch(PDO::FETCH_ASSOC)): ?>
+        <!-- <?php while ($row = $liste->fetch(PDO::FETCH_ASSOC)): ?> -->
             <tr>
                 <td><?php echo $row['id']; ?></td>
                 <td><?php echo $row['title']; ?></td>
@@ -59,7 +68,7 @@ if (
                 <a href="update.php?slug=<?php echo urlencode($row['slug']); ?>">Edit</a>
                 </td>
             </tr>
-        <?php endwhile; ?>
+        <!-- <?php endwhile; ?> -->
     </table>
 </body>
 </html>
